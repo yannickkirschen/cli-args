@@ -17,6 +17,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest wheel twine
           pip install -r requirements.txt
+      - name: Install package
+        run: python3 setup.py sdist install
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -31,5 +33,5 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          python setup.py sdist bdist_wheel
+          python setup.py sdist
           twine upload dist/*
