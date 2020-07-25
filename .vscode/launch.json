@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Print help",
+            "type": "python",
+            "request": "launch",
+            "program": "${cwd}/demo/demo.py",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}"
+            },
+            "args": [
+                "-h"
+            ]
+        },
+        {
+            "name": "Demo of cli-args",
+            "type": "python",
+            "request": "launch",
+            "program": "${cwd}/demo/demo.py",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}"
+            },
+            "args": [
+                "--integer_a=2",
+                "--integer_b=5"
+            ]
+        }
+    ]
+}
