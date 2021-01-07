@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Code of Conduct
+    url: https://github.com/yannickkirschen/cli-args/blob/master/CODE_OF_CONDUCT.md
+    about: Please stick to the code of conduct.
+  - name: Issues
+    url: https://github.com/yannickkirschen/cli-args/issues
+    about: Please have a look if your issue has been solved in the past.

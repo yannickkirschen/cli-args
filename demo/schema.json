@@ -1,0 +1,21 @@
+{
+    "description": "Process some integers.",
+    "arguments": [
+        {
+            "short": "a",
+            "long": "integer_a",
+            "var": "NUMBER",
+            "help": "The first integer",
+            "default": 0,
+            "type": "int"
+        },
+        {
+            "short": "b",
+            "long": "integer_b",
+            "var": "NUMBER",
+            "help": "The second integer",
+            "default": "0",
+            "type": "int"
+        }
+    ]
+}
