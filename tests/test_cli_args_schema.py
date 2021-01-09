@@ -2,10 +2,8 @@ import sys
 
 import cli_args
 
-
 sys.argv.append('--integer_a=3')
 sys.argv.append('--integer_b=5')
-
 
 cli_args.from_file('demo/schema.json')
 

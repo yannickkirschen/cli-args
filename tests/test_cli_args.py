@@ -2,12 +2,9 @@ import sys
 
 import cli_args
 
-
 sys.argv.append('--integer_a=3')
 sys.argv.append('--integer_b=5')
 
-
-# or: cli_args.from_file('path/to/schema.json')
 cli_args.from_schema({
     "description": "Process some integers.",
     "arguments": [

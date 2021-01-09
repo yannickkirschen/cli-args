@@ -1,18 +1,15 @@
+import argparse
 import inspect
 import json
 
-import argparse
-
-
 __all__ = ['argv', 'from_schema', 'from_file']
 
-
 _types = {
-    "str": str,
-    "int": int,
-    "float": float,
-    "complex": complex,
-    "bool": bool,
+    'str': str,
+    'int': int,
+    'float': float,
+    'complex': complex,
+    'bool': bool,
 }
 
 
@@ -21,21 +18,23 @@ class _Singleton(type):
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
-            cls._instances[cls] = super(
-                _Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = super(_Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
 
 class _Args(metaclass=_Singleton):
     def __init__(self):
+        super().__init__()
         self._args = {}
 
     def read(self, schema):
         parser = argparse.ArgumentParser(description=schema['description'])
 
         for argument in schema['arguments']:
+            if 'short' in argument:
+                parser.add_argument('-' + argument['short'])
+
             parser.add_argument(
-                '-' + argument['short'],
                 '--' + argument['long'],
                 help=argument['help'],
                 default=argument['default'],
@@ -46,9 +45,8 @@ class _Args(metaclass=_Singleton):
         known_args = parser.parse_known_args()
 
         for i in inspect.getmembers(known_args[0]):
-            if not i[0].startswith('_'):
-                if not inspect.ismethod(i[1]):
-                    self._args[i[0]] = i[1]
+            if not i[0].startswith('_') and not inspect.ismethod(i[1]):
+                self._args[i[0]] = i[1]
 
     def __getitem__(self, item):
         if item not in self._args:
